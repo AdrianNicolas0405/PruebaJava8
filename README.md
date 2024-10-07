@@ -3,6 +3,11 @@
 ## Descripción
 Este proyecto es una aplicación web de gestión de tareas desarrollada con Java 8 y Spring Boot MVC. Utiliza la arquitectura MVC (Modelo-Vista-Controlador) para organizar la lógica de la aplicación, separando claramente la interacción con la base de datos, la lógica de negocio y la presentación de las vistas al usuario. Permite registrar tareas con nombre, descripción y fecha de inicio, además de listar las tareas creadas. El proyecto se encuentra dividido en dos módulos: el principal (`PruebaJava`) y un módulo separado (`datos - module`) que maneja la conexión a la base de datos mediante MyBatis y MySQL.
 
+## Links de las pantallas
+- **Pantalla de bienvenida:** http://localhost:8081/tarea/
+- **Pantalla para dar de alta una tarea:** http://localhost:8081/tarea/crear
+- **Pantalla de listado de tareas dadas de alta:** http://localhost:8081/tarea/lista
+
 ## Tecnologías Usadas
 - **Java 8**
 - **Spring Boot MVC**
