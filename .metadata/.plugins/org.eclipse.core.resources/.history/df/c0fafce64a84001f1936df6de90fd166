@@ -1,0 +1,63 @@
+package com.ejemplo.proyectoprueba.controller;
+
+import com.ejemplo.proyectoprueba.mapper.TareaMapper;
+import com.ejemplo.proyectoprueba.model.Tarea;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/tarea")
+public class TareaController {
+
+    @Autowired
+    private TareaMapper tareaMapper; // Usar TareaMapper
+
+    // Método para mostrar la pantalla de inicio
+    @GetMapping("/")
+    public String mostrarInicio(Model model) {
+        model.addAttribute("title", "Bienvenido a la aplicación de tareas");
+        return "home"; // nombre de la vista de inicio
+    }
+
+    @GetMapping("/crear")
+    public String mostrarFormulario(Model model) {
+        model.addAttribute("tarea", new Tarea()); // Agrega un objeto Tarea al modelo
+        return "create"; // nombre de la vista
+    }
+
+    @PostMapping("/guardar")
+    public String guardarTarea(@ModelAttribute Tarea tarea) {
+        tareaMapper.insertTarea(tarea); // Guarda la tarea en la base de datos usando MyBatis
+        return "redirect:/tarea/listar"; // Redirigir después de guardar
+    }
+
+    @GetMapping("/listar")
+    public String listarTareas(Model model) {
+        List<Tarea> tareas = tareaMapper.getAllTareas(); // Obtiene todas las tareas usando MyBatis
+        model.addAttribute("tareas", tareas); // Agrega las tareas al modelo
+        return "list"; // nombre de la vista
+    }
+
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioEditar(@PathVariable Long id, Model model) {
+        Tarea tarea = tareaMapper.getTareaById(id); // Obtener la tarea por ID
+        model.addAttribute("tarea", tarea); // Agrega la tarea al modelo
+        return "edit"; // nombre de la vista para editar
+    }
+
+    @PostMapping("/actualizar")
+    public String actualizarTarea(@ModelAttribute Tarea tarea) {
+        tareaMapper.updateTarea(tarea); // Actualiza la tarea en la base de datos
+        return "redirect:/tarea/listar"; // Redirigir después de actualizar
+    }
+
+    @GetMapping("/eliminar/{id}")
+    public String eliminarTarea(@PathVariable Long id) {
+        tareaMapper.deleteTarea(id); // Eliminar tarea por ID
+        return "redirect:/tarea/listar"; // Redirigir después de eliminar
+    }
+}

@@ -1,0 +1,23 @@
+package com.ejemplo.proyectoprueba.service;
+
+import com.ejemplo.proyectoprueba.model.Tarea;
+import com.ejemplo.proyectoprueba.repository.TareaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class TareaService {
+
+    @Autowired
+    private TareaRepository tareaRepository;
+
+    public void save(Tarea tarea) {
+        tareaRepository.save(tarea);
+    }
+
+    public List<Tarea> findAll() {
+        return tareaRepository.findAll();
+    }
+}

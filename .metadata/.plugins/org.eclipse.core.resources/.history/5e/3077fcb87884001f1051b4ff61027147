@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Alta de Tareas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f4f8; /* Fondo suave y minimalista */
+            font-family: Arial, sans-serif; /* Fuente más legible */
+        }
+        h1 {
+            margin-top: 30px; /* Espacio arriba del encabezado */
+            color: #333; /* Color oscuro */
+        }
+        .form-control {
+            border-radius: 20px; /* Bordes redondeados en los cuadros de texto */
+            border: 1px solid #ccc; /* Borde gris suave */
+        }
+        .form-control:focus {
+            border-color: #007bff; /* Borde azul al enfocar */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra azul suave al enfocar */
+        }
+        .btn-primary {
+            border-radius: 20px; /* Bordes redondeados en el botón */
+            padding: 10px 20px; /* Mayor espacio en el botón */
+            background-color: #007bff; /* Color de fondo azul */
+            border: none; /* Sin borde */
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* Color de fondo más oscuro al pasar el mouse */
+        }
+        .alert {
+            border-radius: 20px; /* Bordes redondeados en la alerta */
+        }
+        .text-danger {
+            margin-top: 5px; /* Espacio arriba de los mensajes de error */
+        }
+        .container {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave alrededor del contenedor */
+            padding: 30px; /* Espaciado interno */
+            border-radius: 20px; /* Bordes redondeados en el contenedor */
+            background-color: #ffffff; /* Fondo blanco para el formulario */
+            margin-top: 50px; /* Espacio arriba del contenedor */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Alta de Nueva Tarea</h1>
+
+        <!-- Mostrar mensaje de error general -->
+        <div th:if="${error}" class="alert alert-danger text-center" role="alert">
+            <p th:text="${error}"></p>
+        </div>
+
+        <form th:action="@{/tarea/guardar}" th:object="${tarea}" method="post">
+            <!-- Campo para Nombre -->
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+                <!-- Mostrar errores específicos del campo "nombre" -->
+                <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+            </div>
+
+            <!-- Campo para Descripción -->
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea class="form-control" id="descripcion" th:field="*{descripcion}" required></textarea>
+                <!-- Mostrar errores específicos del campo "descripcion" -->
+                <div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+            </div>
+
+            <!-- Campo para Fecha de Inicio -->
+            <div class="form-group">
+                <label for="fechaInicio">Fecha de Inicio</label>
+                <input type="date" class="form-control" id="fechaInicio" th:field="*{fechaInicio}" required>
+                <!-- Mostrar errores específicos del campo "fechaInicio" -->
+                <div class="text-danger" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
+            </div>
+
+            <!-- Botón de envío -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Dar de Alta Tarea</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

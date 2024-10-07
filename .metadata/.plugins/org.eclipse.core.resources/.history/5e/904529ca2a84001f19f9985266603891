@@ -1,0 +1,5 @@
+package com.ejemplo.proyectoprueba.repository;
+
+public class TareaRepository {
+
+}

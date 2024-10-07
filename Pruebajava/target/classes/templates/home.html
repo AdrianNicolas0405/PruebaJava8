@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Bienvenido</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f4f8; /* Fondo suave */
+            font-family: Arial, sans-serif; /* Fuente más legible */
+        }
+        .container {
+            margin-top: 100px; /* Espacio en la parte superior */
+            background-color: #ffffff; /* Fondo blanco para el contenedor */
+            border-radius: 20px; /* Bordes redondeados */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave alrededor */
+            padding: 30px; /* Espaciado interno */
+        }
+        h1 {
+            color: #343a40; /* Color oscuro para el encabezado */
+            margin-bottom: 20px; /* Espacio debajo del encabezado */
+        }
+        p {
+            color: #6c757d; /* Color gris suave para el texto */
+            font-size: 1.2em; /* Tamaño de fuente mayor */
+            margin-bottom: 30px; /* Espacio debajo del párrafo */
+        }
+        .btn-primary {
+            border-radius: 20px; /* Bordes redondeados en el botón */
+            padding: 10px 20px; /* Mayor espacio en el botón */
+            font-size: 1.1em; /* Tamaño de fuente del botón */
+        }
+        .note {
+            font-style: italic; /* Estilo cursivo para la nota */
+            color: #007bff; /* Color azul para la nota */
+            margin-top: 20px; /* Espacio arriba de la nota */
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h1>¡Prepárate para conquistar tu día a día!</h1> <!-- Eliminar th:text para mostrar texto directamente -->
+        <p>Bienvenido a tu aplicación de gestión de tareas.</p>
+        <a class="btn btn-primary" href="/tarea/crear">Registrar una tarea</a>
+        <p class="note">Esta es mi oportunidad para ser parte de la familia Rocket Code.</p>
+    </div>
+</body>
+</html>

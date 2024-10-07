@@ -1,0 +1,35 @@
+package com.ejemplo.proyectoprueba.service;
+
+import com.ejemplo.model.mapper.TareaMapper;
+import com.ejemplo.model.Tarea;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class TareaService {
+
+    @Autowired
+    private TareaMapper tareaMapper;
+
+    public void save(Tarea tarea) {
+        tareaMapper.insertTarea(tarea);
+    }
+
+    public List<Tarea> findAll() {
+        return tareaMapper.getAllTareas();
+    }
+
+    public Tarea findById(Long id) {
+        return tareaMapper.getTareaById(id);
+    }
+
+    public void update(Tarea tarea) {
+        tareaMapper.updateTarea(tarea);
+    }
+
+    public void delete(Long id) {
+        tareaMapper.deleteTarea(id);
+    }
+}

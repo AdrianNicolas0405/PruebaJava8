@@ -1,0 +1,5 @@
+package com.ejemplo.datos.config;
+
+public class MyBatisConfig {
+
+}

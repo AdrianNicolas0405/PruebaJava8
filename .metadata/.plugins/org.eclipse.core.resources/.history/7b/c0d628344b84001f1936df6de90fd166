@@ -1,0 +1,15 @@
+package com.ejemplo.proyectoprueba.mapper;
+
+import com.ejemplo.proyectoprueba.model.Tarea;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+
+@Mapper
+public interface TareaMapper {
+    void insertTarea(Tarea tarea);
+    Tarea getTareaById(Long id);
+    List<Tarea> getAllTareas();
+    void updateTarea(Tarea tarea);
+    void deleteTarea(Long id);
+}

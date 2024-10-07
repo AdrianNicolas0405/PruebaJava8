@@ -1,0 +1,5 @@
+package com.ejemplo.datos.model;
+
+public class Tarea {
+
+}

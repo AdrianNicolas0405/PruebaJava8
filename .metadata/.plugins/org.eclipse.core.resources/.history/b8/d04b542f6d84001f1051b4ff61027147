@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listar Tareas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Listado de Tareas</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Fecha de Inicio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${#lists.isEmpty(tareas)}">
+                    <td colspan="3">No hay tareas disponibles.</td>
+                </tr>
+                <tr th:each="tarea : ${tareas}">
+                    <td th:text="${tarea.nombre}"></td>
+                    <td th:text="${tarea.descripcion}"></td>
+                    <td th:text="${tarea.fechaInicio != null ? #dates.format(tarea.fechaInicio, 'dd/MM/yyyy') : 'Sin fecha'}"></td> <!-- Formato de fecha -->
+                </tr>
+            </tbody>
+        </table>
+        <a href="/tarea/crear" class="btn btn-primary">Crear Nueva Tarea</a>
+    </div>
+</body>
+</html>

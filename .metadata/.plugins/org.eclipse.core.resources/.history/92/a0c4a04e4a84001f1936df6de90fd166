@@ -1,0 +1,9 @@
+package com.ejemplo.datos.mapper;
+
+import com.ejemplo.datos.model.Tarea;
+import java.util.List;
+
+public interface TareaMapper {
+    void insertarTarea(Tarea tarea);
+    List<Tarea> listarTareas();
+}

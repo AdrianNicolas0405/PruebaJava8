@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-mapper-3.0.dtd">
+
+<mapper namespace="com.ejemplo.proyectoprueba.mapper.TareaMapper">
+    
+    <insert id="insertarTarea" parameterType="com.ejemplo.proyectoprueba.model.Tarea">
+        INSERT INTO tareas (nombre, descripcion, fechaInicio)
+        VALUES (#{nombre}, #{descripcion}, #{fechaInicio})
+    </insert>
+
+    <select id="listarTareas" resultType="com.ejemplo.proyectoprueba.model.Tarea">
+        SELECT * FROM tareas
+    </select>
+
+</mapper>

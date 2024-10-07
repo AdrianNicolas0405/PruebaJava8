@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Crear Tarea</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Crear Nueva Tarea</h1>
+
+        <!-- Mostrar mensaje de error general -->
+        <div th:if="${error}" class="alert alert-danger" role="alert">
+            <p th:text="${error}"></p>
+        </div>
+
+        <form th:action="@{/tarea/guardar}" th:object="${tarea}" method="post">
+            <!-- Campo para Nombre -->
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+                
+                <!-- Mostrar errores específicos del campo "nombre" -->
+                <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+            </div>
+
+            <!-- Campo para Descripción -->
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea class="form-control" id="descripcion" th:field="*{descripcion}" required></textarea>
+
+                <!-- Mostrar errores específicos del campo "descripcion" -->
+                <div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+            </div>
+
+            <!-- Campo para Fecha de Inicio -->
+            <div class="form-group">
+                <label for="fechaInicio">Fecha de Inicio</label>
+                <input type="date" class="form-control" id="fechaInicio" th:field="*{fechaInicio}" required>
+
+                <!-- Mostrar errores específicos del campo "fechaInicio" -->
+                <div class="text-danger" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
+            </div>
+
+            <!-- Botón de envío -->
+            <button type="submit" class="btn btn-primary">Guardar Tarea</button>
+        </form>
+    </div>
+</body>
+</html>

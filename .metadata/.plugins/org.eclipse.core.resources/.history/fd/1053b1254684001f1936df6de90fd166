@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-mapper-3.0.dtd">
+
+<mapper namespace="com.ejemplo.proyectoprueba.mapper.TareaMapper">
+
+    <!-- Insertar una nueva tarea -->
+    <insert id="insertTarea" parameterType="Tarea">
+        INSERT INTO tareas (nombre, descripcion, fecha_inicio)
+        VALUES (#{nombre}, #{descripcion}, #{fechaInicio})
+    </insert>
+
+    <!-- Obtener una tarea por ID -->
+    <select id="getTareaById" parameterType="long" resultType="Tarea">
+        SELECT id, nombre, descripcion, fecha_inicio
+        FROM tareas
+        WHERE id = #{id}
+    </select>
+
+    <!-- Obtener todas las tareas -->
+    <select id="getAllTareas" resultType="Tarea">
+        SELECT id, nombre, descripcion, fecha_inicio
+        FROM tareas
+    </select>
+
+    <!-- Actualizar una tarea -->
+    <update id="updateTarea" parameterType="Tarea">
+        UPDATE tareas
+        SET nombre = #{nombre},
+            descripcion = #{descripcion},
+            fecha_inicio = #{fechaInicio}
+        WHERE id = #{id}
+    </update>
+
+    <!-- Eliminar una tarea -->
+    <delete id="deleteTarea" parameterType="long">
+        DELETE FROM tareas
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

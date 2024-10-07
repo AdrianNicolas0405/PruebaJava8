@@ -1,0 +1,35 @@
+import com.ejemplo.proyectoprueba.model.Tarea;
+import com.ejemplo.proyectoprueba.repository.TareaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/tarea")
+public class TareaController {
+
+    @Autowired
+    private TareaRepository tareaRepository;
+
+    @GetMapping("/crear")
+    public String mostrarFormulario(Model model) {
+        model.addAttribute("tarea", new Tarea());
+        return "create"; // nombre de la vista
+    }
+
+    @PostMapping("/guardar")
+    public String guardarTarea(@ModelAttribute Tarea tarea) {
+        tareaRepository.save(tarea); // guarda la tarea en la base de datos
+        return "redirect:/tarea/listar"; // redirigir después de guardar
+    }
+
+    @GetMapping("/listar")
+    public String listarTareas(Model model) {
+        model.addAttribute("tareas", tareaRepository.findAll()); // obtén todas las tareas
+        return "list"; // nombre de la vista
+    }
+}

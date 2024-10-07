@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="com.ejemplo.proyectoprueba.mapper.TareaMapper">
+
+    <!-- Insertar una nueva tarea -->
+    <insert id="insertTarea" parameterType="Tarea">
+        INSERT INTO tareas (nombre, descripcion, fechaInicio)
+        VALUES (#{nombre}, #{descripcion}, #{fechaInicio})
+    </insert>
+
+    <!-- Obtener una tarea por ID -->
+    <select id="getTareaById" parameterType="long" resultType="Tarea">
+        SELECT id, nombre, descripcion, fechaInicio
+        FROM tareas
+        WHERE id = #{id}
+    </select>
+
+    <!-- Obtener todas las tareas -->
+    <select id="getAllTareas" resultType="Tarea">
+        SELECT id, nombre, descripcion, fechaInicio
+        FROM tareas
+    </select>
+
+    <!-- Actualizar una tarea -->
+    <update id="updateTarea" parameterType="Tarea">
+        UPDATE tareas
+        SET nombre = #{nombre},
+            descripcion = #{descripcion},
+            fechaInicio = #{fechaInicio}
+        WHERE id = #{id}
+    </update>
+
+    <!-- Eliminar una tarea -->
+    <delete id="deleteTarea" parameterType="long">
+        DELETE FROM tareas
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

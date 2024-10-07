@@ -1,0 +1,31 @@
+package com.ejemplo.proyectoprueba.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/tarea")
+public class TareaController {
+
+    @GetMapping("/crear")
+    public String mostrarFormulario(Model model) {
+        return "create"; // nombre de la vista
+    }
+
+    @PostMapping("/guardar")
+    public String guardarTarea(@ModelAttribute Tarea tarea) {
+        // Aquí guardas la tarea en la base de datos
+        tareaService.save(tarea);
+        return "redirect:/tarea/listar"; // Redirige a la lista de tareas después de guardar
+    }
+
+
+    @GetMapping("/listar")
+    public String listarTareas(Model model) {
+        // lógica para listar tareas
+        return "list"; // nombre de la vista
+    }
+}

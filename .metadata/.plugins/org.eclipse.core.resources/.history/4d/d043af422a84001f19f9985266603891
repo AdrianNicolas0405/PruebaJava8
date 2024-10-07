@@ -1,0 +1,5 @@
+package com.ejemplo.proyectoprueba.model;
+
+public class Tarea {
+
+}

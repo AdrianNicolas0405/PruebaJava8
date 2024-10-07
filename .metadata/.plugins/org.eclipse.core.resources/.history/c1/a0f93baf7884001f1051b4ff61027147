@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Alta de Tareas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Fondo suave */
+            font-family: Arial, sans-serif; /* Fuente más legible */
+        }
+        h1 {
+            margin-top: 30px; /* Espacio arriba del encabezado */
+            color: #343a40; /* Color oscuro */
+        }
+        .form-control {
+            border-radius: 20px; /* Bordes redondeados en los cuadros de texto */
+        }
+        .btn-primary {
+            border-radius: 20px; /* Bordes redondeados en el botón */
+            padding: 10px 20px; /* Mayor espacio en el botón */
+        }
+        .alert {
+            border-radius: 20px; /* Bordes redondeados en la alerta */
+        }
+        .text-danger {
+            margin-top: 5px; /* Espacio arriba de los mensajes de error */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Alta de Nueva Tarea</h1>
+
+        <!-- Mostrar mensaje de error general -->
+        <div th:if="${error}" class="alert alert-danger text-center" role="alert">
+            <p th:text="${error}"></p>
+        </div>
+
+        <form th:action="@{/tarea/guardar}" th:object="${tarea}" method="post">
+            <!-- Campo para Nombre -->
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required>
+                <!-- Mostrar errores específicos del campo "nombre" -->
+                <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+            </div>
+
+            <!-- Campo para Descripción -->
+            <div class="form-group">
+                <label for="descripcion">Descripción</label>
+                <textarea class="form-control" id="descripcion" th:field="*{descripcion}" required></textarea>
+                <!-- Mostrar errores específicos del campo "descripcion" -->
+                <div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+            </div>
+
+            <!-- Campo para Fecha de Inicio -->
+            <div class="form-group">
+                <label for="fechaInicio">Fecha de Inicio</label>
+                <input type="date" class="form-control" id="fechaInicio" th:field="*{fechaInicio}" required>
+                <!-- Mostrar errores específicos del campo "fechaInicio" -->
+                <div class="text-danger" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
+            </div>
+
+            <!-- Botón de envío -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Dar de Alta Tarea</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

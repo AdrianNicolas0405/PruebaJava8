@@ -1,0 +1,12 @@
+<!ELEMENT mapper (select|insert|update|delete|resultMap|sql|cache|parameterMap|resultType|parameterType|id)>
+<!ELEMENT select (#PCDATA)>
+<!ELEMENT insert (#PCDATA)>
+<!ELEMENT update (#PCDATA)>
+<!ELEMENT delete (#PCDATA)>
+<!ELEMENT resultMap (#PCDATA)>
+<!ELEMENT sql (#PCDATA)>
+<!ELEMENT cache (#PCDATA)>
+<!ELEMENT parameterMap (#PCDATA)>
+<!ELEMENT resultType (#PCDATA)>
+<!ELEMENT parameterType (#PCDATA)>
+<!ATTLIST mapper namespace CDATA #REQUIRED>

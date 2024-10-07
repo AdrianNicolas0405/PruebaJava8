@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-mapper-3.0.dtd">
+
+<mapper namespace="com.ejemplo.proyectoprueba.mapper.TareaMapper">
+
+    <!-- Ejemplo de una consulta para obtener una tarea por su ID -->
+    <select id="selectTarea" parameterType="int" resultType="com.ejemplo.proyectoprueba.model.Tarea">
+        SELECT * FROM tareas WHERE id = #{id}
+    </select>
+
+    <!-- Ejemplo de una inserción de una nueva tarea -->
+    <insert id="insertTarea" parameterType="com.ejemplo.proyectoprueba.model.Tarea">
+        INSERT INTO tareas (nombre, descripcion) VALUES (#{nombre}, #{descripcion})
+    </insert>
+
+    <!-- Ejemplo de una actualización de una tarea -->
+    <update id="updateTarea" parameterType="com.ejemplo.proyectoprueba.model.Tarea">
+        UPDATE tareas SET nombre = #{nombre}, descripcion = #{descripcion} WHERE id = #{id}
+    </update>
+
+    <!-- Ejemplo de una eliminación de una tarea -->
+    <delete id="deleteTarea" parameterType="int">
+        DELETE FROM tareas WHERE id = #{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,10 @@
+package com.ejemplo.datos.config;
+
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@MapperScan("com.ejemplo.datos.mapper") // Ajusta esto según donde coloques tus mapeadores
+public class MyBatisConfig {
+    // Aquí puedes agregar configuraciones adicionales si es necesario
+}

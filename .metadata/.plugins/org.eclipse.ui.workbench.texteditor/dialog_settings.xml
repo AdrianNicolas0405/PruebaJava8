@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="hasShownOverlayPopupBefore" value="true"/>
+	<item key="replaceBarOpen" value="false"/>
+	<list key="searchhistory">
+		<item value="spring.mvc.format.date=yyyy-MM-dd"/>
+		<item value="spring.mvc.format.time=HH:mm:ss"/>
+		<item value="validation"/>
+		<item value="href"/>
+		<item value="jpa"/>
+		<item value="batis"/>
+		<item value="spring-boot-starte"/>
+	</list>
+</section>

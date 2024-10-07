@@ -1,0 +1,3 @@
+<mapper namespace="com.ejemplo.proyectoprueba.mapper.TareaMapper">
+    <!-- Definiciones de tus consultas SQL aquí -->
+</mapper>

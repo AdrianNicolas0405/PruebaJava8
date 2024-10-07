@@ -1,0 +1,47 @@
+package com.ejemplo.proyectoprueba.controller;
+
+import com.ejemplo.proyectoprueba.mapper.TareaMapper;
+import com.ejemplo.proyectoprueba.model.Tarea;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/tarea")
+public class TareaController {
+
+    @Autowired
+    private TareaMapper tareaMapper; // Cambia a usar TareaMapper
+
+    // Método para mostrar la pantalla de inicio
+    @GetMapping("/")
+    public String mostrarInicio(Model model) {
+        model.addAttribute("title", "Bienvenido a la aplicación de tareas");
+        return "home"; // nombre de la vista de inicio
+    }
+
+    @GetMapping("/crear")
+    public String mostrarFormulario(Model model) {
+        model.addAttribute("tarea", new Tarea()); // Agrega un objeto Tarea al modelo
+        return "create"; // nombre de la vista
+    }
+
+    @PostMapping("/guardar")
+    public String guardarTarea(@ModelAttribute Tarea tarea) {
+        tareaMapper.insertarTarea(tarea); // Guarda la tarea en la base de datos usando MyBatis
+        return "redirect:/tarea/listar"; // Redirigir después de guardar
+    }
+
+    @GetMapping("/listar")
+    public String listarTareas(Model model) {
+        List<Tarea> tareas = tareaMapper.listarTareas(); // Obtiene todas las tareas usando MyBatis
+        model.addAttribute("tareas", tareas); // Agrega las tareas al modelo
+        return "list"; // nombre de la vista
+    }
+}

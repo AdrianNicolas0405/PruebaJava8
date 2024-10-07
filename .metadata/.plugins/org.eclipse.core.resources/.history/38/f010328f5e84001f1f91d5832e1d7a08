@@ -1,0 +1,67 @@
+package com.ejemplo.datos.model;
+
+import org.apache.ibatis.type.Alias;
+
+import java.time.LocalDate;
+
+@Alias("Tarea")
+public class Tarea {
+
+    private Long id; // Si se genera automáticamente, no es necesario en el constructor
+    private String nombre;
+    private String descripcion;
+    private LocalDate fechaInicio;
+
+    // Constructor por defecto
+    public Tarea() {}
+
+    // Constructor sin id
+    public Tarea(String nombre, String descripcion, LocalDate fechaInicio) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fechaInicio = fechaInicio;
+    }
+
+    // Getters y Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    @Override
+    public String toString() {
+        return "Tarea{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", fechaInicio=" + fechaInicio +
+                '}';
+    }
+}

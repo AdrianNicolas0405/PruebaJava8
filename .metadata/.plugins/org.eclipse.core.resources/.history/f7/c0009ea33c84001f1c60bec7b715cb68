@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="com.ejemplo.proyectoprueba.mapper.TareaMapper">
+
+    <resultMap id="tareaResultMap" type="com.ejemplo.proyectoprueba.model.Tarea">
+        <result property="id" column="id"/> <!-- Asegúrate de incluir el ID si es necesario -->
+        <result property="nombre" column="nombre"/>
+        <result property="descripcion" column="descripcion"/>
+        <result property="fechaInicio" column="fechaInicio"/> <!-- Este nombre ahora coincide con tu base de datos -->
+    </resultMap>
+
+    <insert id="insertarTarea" parameterType="com.ejemplo.proyectoprueba.model.Tarea">
+        INSERT INTO tareas (nombre, descripcion, fechaInicio) VALUES (#{nombre}, #{descripcion}, #{fechaInicio})
+    </insert>
+
+    <select id="listarTareas" resultMap="tareaResultMap">
+        SELECT * FROM tareas
+    </select>
+
+</mapper>

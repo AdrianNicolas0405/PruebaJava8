@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mapper namespace="com.ejemplo.proyectoprueba.mapper.TareaMapper">
+    <resultMap id="TareaResult" type="com.ejemplo.proyectoprueba.model.Tarea">
+        <id column="id" property="id" />
+        <result column="nombre" property="nombre" />
+        <result column="descripcion" property="descripcion" />
+        <result column="fechaInicio" property="fechaInicio" />
+    </resultMap>
+
+    <select id="selectAllTareas" resultMap="TareaResult">
+        SELECT * FROM Tareas
+    </select>
+</mapper>
