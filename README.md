@@ -1,4 +1,4 @@
-# PruebaJava8
+# PrácticaJava8
 
 ## Descripción
 Este proyecto es una aplicación web de gestión de tareas desarrollada con Java 8 y Spring Boot MVC. Utiliza la arquitectura MVC (Modelo-Vista-Controlador) para organizar la lógica de la aplicación, separando claramente la interacción con la base de datos, la lógica de negocio y la presentación de las vistas al usuario. Permite registrar tareas con nombre, descripción y fecha de inicio, además de listar las tareas creadas. El proyecto se encuentra dividido en dos módulos: el principal (`PruebaJava`) y un módulo separado (`datos - module`) que maneja la conexión a la base de datos mediante MyBatis y MySQL.
